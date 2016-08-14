@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: ${SERVICE_NAME:default}
+logging:
+  level.org.springframework.cloud: ERROR
