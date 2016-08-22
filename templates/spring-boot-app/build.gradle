@@ -1,0 +1,42 @@
+buildscript {
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+    }
+    repositories {
+        jcenter()
+    }
+}
+
+group = "${group}"
+version = "${version}"
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+def javaVersion = 1.8
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+repositories {
+    jcenter()
+}
+
+def springBootVersion = "1.4.0.RELEASE"
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:" + springBootVersion
+    compile "org.springframework.boot:spring-boot-starter-security:" + springBootVersion
+    compile "org.springframework.boot:spring-boot-starter-actuator:" + springBootVersion
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:" + springBootVersion
+}
+
+jar.archiveName=project.name + ".jar"
+
+bootRepackage {
+    mainClass = '${group}.Application'
+}
+
+springBoot {
+    executable = true
+}
