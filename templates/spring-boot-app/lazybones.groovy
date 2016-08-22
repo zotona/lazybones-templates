@@ -10,11 +10,13 @@ props.version = ask("Define value for 'version' [0.0.1]: ", "0.0.1", "version")
 props.projectName = ask("Define value for 'projectName': ", "default", "projectName")
 String mainApplicationFileName = 'Application.java'
 String applicationConfigFileName = 'src/main/resources/application.yml'
+String readmeFileName = 'README.md'
 
 processTemplates "build.gradle", props
 processTemplates "settings.gradle", props
 processTemplates mainApplicationFileName, props
 processTemplates applicationConfigFileName, props
+processTemplates readmeFileName, props
 
 String pkgPath = props.group.replace('.' as char, '/' as char)
 Path templatePath = templateDir.toPath()
